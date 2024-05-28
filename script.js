@@ -94,11 +94,16 @@ async function callApi(endpoint) {
     }
 
     try {
-        const response = await fetch(url, options);
-        const data = await response.json();
 
-        if(data && (data.refresh_token || data.token)) {
-            addDataByObj(data);
+        if(!apiKey || !host) {
+            data = { error: 'Please provide host and api_key in the form above' };
+        } else {
+            const response = await fetch(url, options);
+            const data = await response.json();
+
+            if (data && (data.refresh_token || data.token)) {
+                addDataByObj(data);
+            }
         }
 
         //save response to local storage
