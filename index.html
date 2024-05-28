@@ -120,6 +120,70 @@
 
                 <p>
                     This API endpoint is used to create a new company in Simplybook. The company will be associated with the user who makes the request and will have the specified details.
+                    <br><br>
+                    categories:<br>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Category ID</th>
+                            <th>Category Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>3</td>
+                            <td>Beauty and wellness</td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td>Sport and fitness</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Personal meetings and services</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Medical</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Events and entertainment</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Education</td>
+                        </tr>
+                        <tr>
+                            <td>75</td>
+                            <td>Retailers</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Officials</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Other category</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <b>callback_url</b>: This is the URL where the company creation status will be sent. The status will be sent as a POST request with the following parameters:
+
+                    <ul>
+                        <li><b>success:</b> true if the company was created successfully, false otherwise</li>
+                        <li><b>company_id:</b> The ID of the company that was created</li>
+                        <li><b>company_login:</b> The login of the company that was created</li>
+                        <li><b>error:</b> object containing the error details if the company creation failed</li>
+                        <li><b>error[message]</b> The error message if the company creation failed</li>
+                    </ul>
+                    <br>
+
+                    <b>admin_name</b> and <b>password</b> are the credentials for the admin user of the company. The admin user will have full access to the company's settings and resources.<br>
+                    <b>phone</b> is the phone number of the company. Please note that the phone number should be in the international format (e.g. +1234567890).<br>
+                    <b>country_id</b> is the ISO 3166-1 alpha-2 country code of the company's location.<br>
                 </p>
 
                 <p><strong>POST</strong> <code>/simplybook/company</code></p>
