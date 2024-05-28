@@ -95,15 +95,15 @@ async function callApi(endpoint) {
 
     try {
 
-        if(!apiKey || !host) {
-            data = { error: 'Please provide host and api_key in the form above' };
-        } else {
+        if(token && host) {
             const response = await fetch(url, options);
-            const data = await response.json();
+            var data = await response.json();
 
             if (data && (data.refresh_token || data.token)) {
                 addDataByObj(data);
             }
+        } else {
+            data = { error: 'Please provide host and api_key in the form above' };
         }
 
         //save response to local storage
@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
-            console.log(`${endpoint}Response`);
             document.getElementById(`${endpoint}Response`).getElementsByTagName('code')[0].innerHTML = response;
         }
     });
