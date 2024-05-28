@@ -95,7 +95,7 @@ async function callApi(endpoint) {
 
     try {
 
-        if(token && host) {
+        if(apiKey && host) {
             const response = await fetch(url, options);
             var data = await response.json();
 
