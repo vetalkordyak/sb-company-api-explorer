@@ -99,3 +99,34 @@
 }
 ```
 
+---------------
+
+## Apply subscription
+
+### Request
+**POST** `{{ host }}/simplybook/company/{company}/subscriptions`
+
+**Headers:**
+- Content-Type: application/json
+- X-Token: {{ token }}
+
+**Body:**
+```json
+{
+  "plan" : "premium"
+}
+
+
+```
+**Response**
+Empty response if no errors.
+
+In case of error:
+```json
+{
+  "code": 400,
+  "message": "Plan not found",
+  "data": [],
+  "message_data": []
+}
+```
