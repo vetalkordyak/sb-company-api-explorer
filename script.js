@@ -88,7 +88,22 @@ async function callApi(endpoint) {
                 body: requestBody
             };
             break;
+        case 'applySubscription':
+            company = document.getElementById('company').value;
+            url = `${host}/simplybook/company/${company}/subscriptions`;
+            requestBody = document.getElementById('applySubscriptionRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
 
+            
         default:
             return;
     }
