@@ -222,6 +222,46 @@
             </div>
 
         </div>
+
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="apply-subscription">
+                <h2>Apply subscription for company</h2>
+
+                <p>
+                    This API endpoint is used to apply a subscription plan to a company.
+                    date_from, date_to, period, period_type are optional parameters. If not provided, the default values will be used. (1 year from current date).
+                    period, period_type required to determinate correct subscription price and available features.
+                    By default the current active subscription will be updated. If you want to apply a new subscription, set the update_current_subscription flag to false.
+                    <br><br>
+                    <b>plan</b> code of the subscription plan to apply. (To be discussed with SimplyBook team)
+                    <b>date_from</b> date from which the subscription should be applied. (Optional, by default - current date)
+                    <b>date_to</b> date to which the subscription should be applied. (Optional, by default - 1 year from the current date)
+                    <b>period</b> period for which the subscription should be applied. (Optional, by default - 1)
+                    <b>period_type</b> period type for which the subscription should be applied. (Optional, by default - year)
+                    <b>update_current_subscription</b> flag to update the current active subscription, otherwise apply new one. (Optional, by default - true)
+                </p>
+
+                <p><strong>POST</strong> <code>/simplybook/company/{{ company }}/subscriptions</code></p>
+                <p>
+                    <strong>HEADER</strong>
+                <ul>
+                    <li><b>Content-Type:</b> application/json</li>
+                </ul>
+                </p>
+
+                <input type="text" id="company" class="form-control" value="" placeholder="Company login" />
+                <textarea id="applySubscriptionRequest" class="form-control">{
+    "plan": "premium"
+}</textarea><br>
+
+                <button onclick="callApi('applySubscription')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="applySubscriptionResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
     </main>
 </div>
 </body>

@@ -47,6 +47,7 @@ async function callApi(endpoint) {
     let url = '';
     let options = {};
     let requestBody = '';
+    let company = '';
 
     switch (endpoint) {
         case 'getAuthToken':
@@ -143,7 +144,7 @@ async function callApi(endpoint) {
 document.addEventListener('DOMContentLoaded', function () {
 
 //check if response is saved in local storage
-    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany'];
+    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription'];
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
