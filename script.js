@@ -110,10 +110,11 @@ async function callApi(endpoint) {
     }
 
     try {
-
+        const $el = document.getElementById(`${endpoint}Response`).getElementsByTagName('code')[0];
         if(apiKey && host) {
             const response = await fetch(url, options);
             if (response.status === 201) {
+                $el.innerHTML = '';
                 return;
             }
             var data = await response.json();
@@ -128,7 +129,6 @@ async function callApi(endpoint) {
         //save response to local storage
         localStorage.setItem(`${endpoint}Response`, JSON.stringify(data, null, 2));
 
-        const $el = document.getElementById(`${endpoint}Response`).getElementsByTagName('code')[0];
         //inside code block
         $el.innerHTML = JSON.stringify(data, null, 2);
         //remove data-highlighted attribute
