@@ -113,6 +113,9 @@ async function callApi(endpoint) {
 
         if(apiKey && host) {
             const response = await fetch(url, options);
+            if (response.status === 201) {
+                return;
+            }
             var data = await response.json();
 
             if (data && (data.refresh_token || data.token)) {
