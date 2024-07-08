@@ -104,7 +104,7 @@
 ## Apply subscription
 
 ### Request
-**POST** `{{ host }}/simplybook/company/{company}/subscriptions`
+**POST** `{{ host }}/simplybook/company/{{ company }}/subscriptions`
 
 **Headers:**
 - Content-Type: application/json
