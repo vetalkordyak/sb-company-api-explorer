@@ -48,6 +48,7 @@ async function callApi(endpoint) {
     let options = {};
     let requestBody = '';
     let company = '';
+    let subscriptionId = null;
 
     switch (endpoint) {
         case 'getAuthToken':
@@ -90,7 +91,7 @@ async function callApi(endpoint) {
             };
             break;
         case 'applySubscription':
-            company = document.getElementById('company').value;
+            company = document.getElementById('applySubscriptionCompany').value;
             url = `${host}/simplybook/company/${company}/subscriptions`;
             requestBody = document.getElementById('applySubscriptionRequest').value;
             requestBody = prepareRequest(requestBody);
@@ -101,6 +102,34 @@ async function callApi(endpoint) {
                     'X-Token': token
                 },
                 body: requestBody
+            };
+            break;
+        case 'changeSubscription':
+            company = document.getElementById('changeSubscriptionCompany').value;
+            subscriptionId = document.getElementById('changeSubscriptionId').value;
+            url = `${host}/simplybook/company/${company}/subscriptions/${subscriptionId}`;
+            requestBody = document.getElementById('changeSubscriptionRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+        case 'cancelSubscription':
+            company = document.getElementById('cancelSubscriptionCompany').value;
+            subscriptionId = document.getElementById('cancelSubscriptionId').value;
+            url = `${host}/simplybook/company/${company}/subscriptions/${subscriptionId}/cancel`;
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: ''
             };
             break;
 
