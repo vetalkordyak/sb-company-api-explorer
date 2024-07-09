@@ -124,7 +124,7 @@ async function callApi(endpoint) {
             subscriptionId = document.getElementById('cancelSubscriptionId').value;
             url = `${host}/simplybook/company/${company}/subscriptions/${subscriptionId}/cancel`;
             options = {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Token': token

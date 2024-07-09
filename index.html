@@ -269,15 +269,14 @@
 
                 <p>
                     This API endpoint is used to change subscription plan by subscription id.<br />
-                    date_from, date_to are optional parameters. If not provided then parent subscription dates will be used.<br />
+                    date_from, date_to are optional parameters. If not provided it will not be changed.<br />
                     period, period_type are optional parameters, used to determinate correct subscription price and available features. If not provided default values will be used (1 year)<br />
                     <br><br>
                     <b>plan</b> code of the subscription plan to apply. (To be discussed with SimplyBook team)<br />
-                    <b>date_from</b> date from which the subscription should be applied. (Optional, by default - current date)<br />
+                    <b>date_from</b> date from which the subscription should be applied. (Optional, by default it will not be changed)<br />
                     <b>date_to</b> date to which the subscription should be applied. (Optional, by default - 1 year from the current date)<br />
                     <b>period</b> period for which the subscription should be applied. (Optional, by default - 1)<br />
                     <b>period_type</b> period type for which the subscription should be applied. (Optional, by default - year)<br />
-                    <b>update_current_subscription</b> flag to update the current active subscription, otherwise apply new one. (Optional, by default - true)<br />
                 </p>
 
                 <p><strong>PUT</strong> <code>/simplybook/company/{{ company }}/subscriptions/{{ subscriptionId }}</code></p>
