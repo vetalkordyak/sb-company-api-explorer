@@ -121,7 +121,7 @@
                 <p>
                     This API endpoint is used to create a new company in Simplybook. The company will be associated with the user who makes the request and will have the specified details.
                     <br><br>
-                    categories:<br>
+                    <b>categories</b><span style="color:red">*</span> is an array or int value of the category ID of the company. The category ID is used to group companies by type. The following category IDs are available:
                     <table class="table">
                         <thead>
                         <tr>
@@ -170,7 +170,7 @@
                     </table>
 
                     <br>
-                    <b>callback_url</b>: This is the URL where the company creation status will be sent. The status will be sent as a POST request with the following parameters:
+                    <b>callback_url<span style="color:red">*</span></b>: This is the URL where the company creation status will be sent. The status will be sent as a POST request with the following parameters:
 
                     <ul>
                         <li><b>success:</b> true if the company was created successfully, false otherwise</li>
@@ -181,10 +181,40 @@
                     </ul>
                     <br>
 
-                    <b>name</b> is the name of the company. This will be displayed on the company's booking page and in the widget.<br>
-                    <b>email</b> and <b>password</b> are the credentials for the admin user of the company. The admin user will have full access to the company's settings and resources.<br>
-                    <b>phone</b> is the phone number of the company. Please note that the phone number should be in the international format (e.g. +1234567890).<br>
-                    <b>country_id</b> is the ISO 3166-1 alpha-2 country code of the company's location.<br>
+                    <b>lang<span style="color:red">*</span></b> is the language of the company. The default value is "en". Allowed values are:<br>
+                    <ul>
+                        <!-- 'en', 'zh', 'fr', 'cn', 'es', 'ko', 'de', 'ja', 'ru', 'pt', 'br', 'it', 'nl', 'uk' -->
+                        <li><b>en</b> - English</li>
+                        <li><b>zh</b> - Chinese</li>
+                        <li><b>fr</b> - French</li>
+                        <li><b>cn</b> - Chinese (Simplified)</li>
+                        <li><b>es</b> - Spanish</li>
+                        <li><b>ko</b> - Korean</li>
+                        <li><b>de</b> - German</li>
+                        <li><b>ja</b> - Japanese</li>
+                        <li><b>ru</b> - Russian</li>
+                        <li><b>pt</b> - Portuguese</li>
+                        <li><b>br</b> - Portuguese (Brazil)</li>
+                        <li><b>it</b> - Italian</li>
+                        <li><b>nl</b> - Dutch</li>
+                        <li><b>uk</b> - Ukrainian</li>
+                    </ul>
+                    <br>
+                    <b>company_login<span style="color:red">*</span></b> is the login of the company. It`s unique and will be used to access the company's booking page and widget.<br>
+                    <b>name<span style="color:red">*</span></b> is the name of the company. This will be displayed on the company's booking page and in the widget.<br>
+                    <b>email<span style="color:red">*</span></b> and <b>password<span style="color:red">*</span></b> are the credentials for the admin user of the company. The admin user will have full access to the company's settings and resources.<br>
+                    <b>phone<span style="color:red">*</span></b> is the phone number of the company. Please note that the phone number should be in the international format (e.g. +1234567890).<br>
+                    <b>country_id<span style="color:red">*</span></b> is the ISO 3166-1 alpha-2 country code of the company's location.<br>
+                    <b>description<span style="color:red">*</span></b> is the description of the company. This will be displayed on the company's booking page.<br>
+                    <b>city<span style="color:red">*</span></b> is the city where the company is located.<br>
+                    <b>address1<span style="color:red">*</span></b> is the address of the company.<br>
+                    <b>zip</b> is the ZIP code of the company's location.<br>
+                    <b>lat<span style="color:red">*</span></b> and <b>lng<span style="color:red">*</span></b> are the latitude and longitude coordinates of the company's location.<br>
+                    <b>timezone<span style="color:red">*</span></b> is the timezone of the company. This will be used to display the correct time in the booking page and widget.<br>
+                    <b>password<span style="color:red">*</span></b> and <b>retype_password<span style="color:red">*</span></b> are the password and confirmation password for the admin user.<br>
+
+                    <br>
+                    <small>Required fields are marked with <span style="color:red">*</span></small>
                 </p>
 
                 <p><strong>POST</strong> <code>/simplybook/company</code></p>
@@ -213,6 +243,7 @@
     "password": "123123",
     "retype_password": "123123",
     "categories": ["6"],
+    "lang" : "en",
     "callback_url": "https://webhook.site/7e3c8b69-8956-44da-bd23-de6da6e063cc"
 }</textarea><br>
 

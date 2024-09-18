@@ -86,6 +86,7 @@
   "password" : "123123",
   "retype_password" : "123123",
   "categories" : ["6"],
+  "lang" : "en",
   "callback_url" : "https://webhook.site/****************"
 }
 
