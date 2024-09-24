@@ -87,6 +87,7 @@
   "retype_password" : "123123",
   "categories" : ["6"],
   "lang" : "en",
+  "widget_notification_url": "https://mysite.com/simplybook",
   "callback_url" : "https://webhook.site/****************"
 }
 
