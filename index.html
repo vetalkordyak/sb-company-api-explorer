@@ -360,6 +360,38 @@
             <hr class="my-4">
         </div>
 
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="apply-subscription">
+                <h2>Generate login link</h2>
+
+                <p>
+                    This API endpoint is used to generate login link to SB company. Link can be used only once. Link is available during 15 seconds.<br />
+                    <br><br>
+                    <b>partner_return_url</b> The URL that will be used to return user to partner website, during the session.<br />
+                </p>
+
+                <p><strong>POST</strong> <code>/simplybook/company/{{ company }}/create-login-link</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="loginLinkCompany" class="form-control" value="" placeholder="Company login" />
+                <textarea id="loginLinkRequest" class="form-control">{
+    "partner_return_url": "https://webnode.com/"
+}</textarea>
+
+                <button onclick="callApi('loginLink')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="loginLinkResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+
     </main>
 </div>
 </body>

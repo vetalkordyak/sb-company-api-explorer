@@ -132,6 +132,20 @@ async function callApi(endpoint) {
                 body: ''
             };
             break;
+        case 'loginLink':
+            company = document.getElementById('loginLinkCompany').value;
+            url = `${host}/simplybook/company/${company}/create-login-link`;
+            requestBody = document.getElementById('loginLinkRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
 
             
         default:
