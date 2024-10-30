@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages from main
+name: Deploy to GitHub Pages from confirm-email
 
 on:
   push:
