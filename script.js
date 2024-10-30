@@ -90,62 +90,6 @@ async function callApi(endpoint) {
                 body: requestBody
             };
             break;
-        case 'applySubscription':
-            company = document.getElementById('applySubscriptionCompany').value;
-            url = `${host}/simplybook/company/${company}/subscriptions`;
-            requestBody = document.getElementById('applySubscriptionRequest').value;
-            requestBody = prepareRequest(requestBody);
-            options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Token': token
-                },
-                body: requestBody
-            };
-            break;
-        case 'changeSubscription':
-            company = document.getElementById('changeSubscriptionCompany').value;
-            subscriptionId = document.getElementById('changeSubscriptionId').value;
-            url = `${host}/simplybook/company/${company}/subscriptions/${subscriptionId}`;
-            requestBody = document.getElementById('changeSubscriptionRequest').value;
-            requestBody = prepareRequest(requestBody);
-            options = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Token': token
-                },
-                body: requestBody
-            };
-            break;
-        case 'cancelSubscription':
-            company = document.getElementById('cancelSubscriptionCompany').value;
-            subscriptionId = document.getElementById('cancelSubscriptionId').value;
-            url = `${host}/simplybook/company/${company}/subscriptions/${subscriptionId}/cancel`;
-            options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Token': token
-                },
-                body: ''
-            };
-            break;
-        case 'loginLink':
-            company = document.getElementById('loginLinkCompany').value;
-            url = `${host}/simplybook/company/${company}/create-login-link`;
-            requestBody = document.getElementById('loginLinkRequest').value;
-            requestBody = prepareRequest(requestBody);
-            options = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Token': token
-                },
-                body: requestBody
-            };
-            break;
 
             
         default:
