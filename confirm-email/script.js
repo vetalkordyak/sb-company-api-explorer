@@ -91,6 +91,19 @@ async function callApi(endpoint) {
             };
             break;
 
+        case 'confirmCompany':
+            url = `${host}/simplybook/company/confirm`;
+            requestBody = document.getElementById('confirmCompanyRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
             
         default:
             return;
@@ -108,6 +121,14 @@ async function callApi(endpoint) {
 
             if (data && (data.refresh_token || data.token)) {
                 addDataByObj(data);
+            }
+
+            if(data && data.recaptcha_site_key) {
+                addDataKeyVal('recaptcha_site_key', data.recaptcha_site_key);
+                addDataKeyVal('company_id', data.company_id);
+                addDataKeyVal('company_login', data.company_login);
+
+                generateRecaptcha(data.recaptcha_site_key);
             }
         } else {
             data = { error: 'Please provide host and api_key in the form above' };
@@ -133,7 +154,7 @@ async function callApi(endpoint) {
 //on page load
 document.addEventListener('DOMContentLoaded', function () {
 
-//check if response is saved in local storage
+    //check if response is saved in local storage
     const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription'];
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
@@ -164,4 +185,60 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    //add to registerCompanyRequest login counter
+    const regRequest = document.getElementById('registerCompanyRequest');
+    regRequest.value = regRequest.value.replace('testregcompany', 'testregcompany' + Math.floor(Math.random() * 10000));
+
+    const additionalData = JSON.parse(localStorage.getItem('additionalData'));
+
+    //if recaptcha_site_key is present, generate recaptcha
+    if(additionalData && additionalData.recaptcha_site_key) {
+        generateRecaptcha(additionalData.recaptcha_site_key);
+    }
 });
+
+generateRecaptcha = function(siteKey) {
+
+    if(!window.recaptcha) {
+        console.log('recaptcha not loaded');
+        if(!window.recaptchaCallabacks){
+            window.recaptchaCallabacks = [];
+        }
+        window.recaptchaCallabacks.push(function(){
+            generateRecaptcha(siteKey);
+        });
+        return;
+    } else {
+        console.log('recaptcha loaded');
+    }
+
+    const recaptchaContainer = document.getElementById('recaptcha_container');
+    recaptchaContainer.innerHTML = '';
+
+    const randomId = 'recaptcha-' + Math.floor(Math.random() * 10000) + '-' + Math.floor(Math.random() * 10000);
+    const recaptchaDiv = document.createElement('div');
+    recaptchaDiv.setAttribute('id', randomId);
+    recaptchaContainer.appendChild(recaptchaDiv);
+
+    //addDataKeyVal('recaptcha_token', '');
+
+    grecaptcha.render(randomId, {
+        'sitekey' : siteKey,
+        'callback' : function(token) {
+            addDataKeyVal('recaptcha_token', token);
+
+            console.log(token);
+        }
+    });
+}
+
+function onloadRecaptchaCallback(){
+    console.log('recaptcha loaded');
+    if(window.recaptchaCallabacks){
+        //each and pop from array, then call
+        while(window.recaptchaCallabacks.length > 0) {
+            const callback = window.recaptchaCallabacks.pop();
+            callback();
+        }
+    }
+}
