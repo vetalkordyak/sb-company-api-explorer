@@ -147,7 +147,7 @@ async function callApi(endpoint) {
             };
             break;
         case 'widgetSettings':
-            company = document.getElementById('loginLinkCompany').value;
+            company = document.getElementById('widgetSettingsCompany').value;
             url = `${host}/simplybook/company/${company}/widget-settings`;
             requestBody = document.getElementById('widgetSettingsRequest').value;
             requestBody = prepareRequest(requestBody);
