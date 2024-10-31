@@ -43,7 +43,7 @@ prepareRequest = function (request) {
 
 async function callApi(endpoint) {
     const { host, api_key: apiKey, token } = getData();
-
+console.log(endpoint);
     let url = '';
     let options = {};
     let requestBody = '';
