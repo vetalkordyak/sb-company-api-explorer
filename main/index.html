@@ -362,7 +362,7 @@
 
 
         <div class="mt-3 col-12">
-            <div class="endpoint" id="apply-subscription">
+            <div class="endpoint" id="create-login-link">
                 <h2>Generate login link</h2>
 
                 <p>
@@ -390,6 +390,38 @@
             </div>
             <hr class="my-4">
         </div>
+
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="change-widget-settings">
+                <h2>Generate login link</h2>
+
+                <p>
+                    This API endpoint is used to update widget settings<br />
+                    <br><br>
+                    <b>widget_notification_url</b> is the URL where the notification URLs will come to in emails (for cancel booking, edit bookings, etc).<br>
+                </p>
+
+                <p><strong>PUT</strong> <code>/simplybook/company/{{ company }}/widget-settings</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="widgetSettingsCompany" class="form-control" value="" placeholder="Company login" />
+                <textarea id="widgetSettingsRequest" class="form-control">{
+    "widget_notification_url": "https://webnode.com/"
+}</textarea>
+
+                <button onclick="callApi('widgetSettings')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="widgetSettingsResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
 
 
     </main>

@@ -146,7 +146,20 @@ async function callApi(endpoint) {
                 body: requestBody
             };
             break;
-
+        case 'widgetSettings':
+            company = document.getElementById('loginLinkCompany').value;
+            url = `${host}/simplybook/company/${company}/widget-settings`;
+            requestBody = document.getElementById('widgetSettingsRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
             
         default:
             return;
