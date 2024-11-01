@@ -217,8 +217,19 @@ generateRecaptcha = function(siteKey) {
 
     const randomId = 'recaptcha-' + Math.floor(Math.random() * 10000) + '-' + Math.floor(Math.random() * 10000);
     const recaptchaDiv = document.createElement('div');
+    recaptchaDiv.style = 'display: inline-block; margin-right: 10px;';
     recaptchaDiv.setAttribute('id', randomId);
     recaptchaContainer.appendChild(recaptchaDiv);
+
+    //add button to reload recaptcha
+    const reloadButton = document.createElement('button');
+    reloadButton.innerHTML = 'Reload Recaptcha';
+    reloadButton.classList = 'btn btn-primary inline-block mb-3';
+    reloadButton.style = 'vertical-align: top;';
+    reloadButton.onclick = function() {
+        generateRecaptcha(siteKey);
+    }
+    recaptchaContainer.appendChild(reloadButton);
 
     //addDataKeyVal('recaptcha_token', '');
 
