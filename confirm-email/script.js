@@ -159,7 +159,10 @@ document.addEventListener('DOMContentLoaded', function () {
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
-            document.getElementById(`${endpoint}Response`).getElementsByTagName('code')[0].innerHTML = response;
+            var el = document.getElementById(`${endpoint}Response`);
+            if(el) {
+                document.getElementById(`${endpoint}Response`).getElementsByTagName('code')[0].innerHTML = response;
+            }
         }
     });
 
