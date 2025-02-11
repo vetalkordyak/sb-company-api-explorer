@@ -424,6 +424,80 @@
 
 
 
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="custom-domain">
+                <h2>Set custom domain</h2>
+
+                <p>
+                    This API endpoint is used to setup custom domain for the company<br />
+                    <br><br>
+                    <b>domain</b> domain, A record must point to the relevant server<br>
+                </p>
+
+                <p><strong>PUT</strong> <code>/simplybook/company/{{ company }}/custom-domain</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="customDomainCompany" class="form-control" value="" placeholder="Company login" />
+                <textarea id="customDomainRequest" class="form-control">{
+    "domain": "mydomain.com"
+}</textarea>
+
+                <button onclick="callApi('customDomain')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="customDomainResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="custom-smtp">
+                <h2>Set custom domain</h2>
+
+                <p>
+                    This API endpoint is used to setup custom SMTP settings for the company<br />
+                    <br><br>
+                    <b>email_from</b> Email from<br>
+                    <b>name_from</b> Name from<br>
+                    <b>host</b> SMTP server host<br>
+                    <b>port</b> SMTP server port<br>
+                    <b>encryption_type</b> Encryption type (ssl, tls or none)<br>
+                    <b>username</b> Username to authenticate to SMTP server<br>
+                    <b>password</b> Password to authenticate to SMTP server<br>
+                </p>
+
+                <p><strong>PUT</strong> <code>/simplybook/company/{{ company }}/custom-smtp</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="customSmtpCompany" class="form-control" value="" placeholder="Company login" />
+                <textarea id="customSmtpRequest" class="form-control">{
+    "email_from": "no-reply@mydomain.com",
+    "name_from": "Company name",
+    "host": "smtp.mydomain.com",
+    "port": 587,
+    "encryption_type": "tls",
+    "username": "no-reply@mydomain.com",
+    "password": "password"
+}</textarea>
+
+                <button onclick="callApi('customSmtp')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="customSmtpResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+
     </main>
 </div>
 </body>
