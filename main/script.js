@@ -160,7 +160,37 @@ console.log(endpoint);
                 body: requestBody
             };
             break;
-            
+
+        case 'customDomain':
+            company = document.getElementById('customDomainCompany').value;
+            url = `${host}/simplybook/company/${company}/custom-domain`;
+            requestBody = document.getElementById('customDomainRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+
+        case 'customSmtp':
+            company = document.getElementById('customSmtpCompany').value;
+            url = `${host}/simplybook/company/${company}/custom-smtp`;
+            requestBody = document.getElementById('customSmtpRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+
         default:
             return;
     }
