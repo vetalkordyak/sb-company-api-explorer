@@ -498,6 +498,30 @@
             <hr class="my-4">
         </div>
 
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="get-company-status">
+                <h2>Get Company Status</h2>
+
+                <p>
+                    This API endpoint is used to retrieve the current status of a company, including the status of custom features and subscription status.
+                </p>
+
+                <p><strong>GET</strong> <code>/simplybook/company/{{ company }}/status</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="getCompanyStatusCompany" class="form-control" value="" placeholder="Company login" />
+
+                <button onclick="callApi('getCompanyStatus')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="getCompanyStatusResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
 
     </main>
 </div>

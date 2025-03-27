@@ -1,5 +1,3 @@
-
-
 getData = function () {
     let data = {
         "host": document.getElementById('host').value,
@@ -191,6 +189,18 @@ console.log(endpoint);
             };
             break;
 
+        case 'getCompanyStatus':
+            company = document.getElementById('getCompanyStatusCompany').value;
+            url = `${host}/simplybook/company/${company}/status`;
+            options = {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                }
+            };
+            break;
+
         default:
             return;
     }
@@ -233,7 +243,7 @@ console.log(endpoint);
 document.addEventListener('DOMContentLoaded', function () {
 
 //check if response is saved in local storage
-    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription'];
+    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription', 'getCompanyStatus'];
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
