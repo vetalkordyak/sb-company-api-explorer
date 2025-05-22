@@ -201,6 +201,36 @@ console.log(endpoint);
             };
             break;
 
+        case 'block':
+            company = document.getElementById('blockCompany').value;
+            url = `${host}/simplybook/company/${company}/block`;
+            requestBody = document.getElementById('blockRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+
+        case 'unblock':
+            company = document.getElementById('unblockCompany').value;
+            url = `${host}/simplybook/company/${company}/unblock`;
+            requestBody = document.getElementById('unblockRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+
         default:
             return;
     }

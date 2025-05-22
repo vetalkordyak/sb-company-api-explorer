@@ -502,6 +502,66 @@
         </div>
 
         <div class="mt-3 col-12">
+            <div class="endpoint" id="block-company">
+                <h2>Block company</h2>
+
+                <p>
+                    This API endpoint is used to block the company.<br />
+                    <br><br>
+                    <b>reason</b> The reason for blocking the company<br /><br />
+                </p>
+
+                <p><strong>POST</strong> <code>/simplybook/company/{{ company }}/block</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="blockCompany" class="form-control" value="" placeholder="Company login" />
+                <textarea id="blockRequest" class="form-control">{
+    "reason": "My reason"
+}</textarea>
+
+                <button onclick="callApi('block')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="blockResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="unblock-company">
+                <h2>Unblock company</h2>
+
+                <p>
+                    This API endpoint is used to unblock the company.<br />
+                    <br><br>
+                    <b>reason</b> The reason for unblocking the company<br /><br />
+                </p>
+
+                <p><strong>POST</strong> <code>/simplybook/company/{{ company }}/unblock</code></p>
+                <div>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>Content-Type:</b> application/json</li>
+                    </ul>
+                </div>
+
+                <input type="text" id="unblockCompany" class="form-control" value="" placeholder="Company login" />
+                <textarea id="unblockRequest" class="form-control">{
+    "reason": "My reason"
+}</textarea>
+
+                <button onclick="callApi('block')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="unblockResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+        <div class="mt-3 col-12">
             <div class="endpoint" id="get-company-status">
                 <h2>Get Company Status</h2>
 
