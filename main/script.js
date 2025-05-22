@@ -222,7 +222,7 @@ console.log(endpoint);
             requestBody = document.getElementById('unblockRequest').value;
             requestBody = prepareRequest(requestBody);
             options = {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Token': token
