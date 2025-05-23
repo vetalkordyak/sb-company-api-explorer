@@ -121,7 +121,7 @@
                 <p>
                     This API endpoint is used to create a new company in Simplybook. The company will be associated with the user who makes the request and will have the specified details.
                     <br><br>
-                    <b>categories</b><span style="color:red">*</span> is an array or int value of the category ID of the company. The category ID is used to group companies by type. The following category IDs are available:
+                    <b>categories</b> is an array or int value of the category ID of the company. The category ID is used to group companies by type. If you don't pass categories "Other category" wil be applied. The following category IDs are available:
                     <table class="table">
                         <thead>
                         <tr>
@@ -181,7 +181,7 @@
                     </ul>
                     <br>
 
-                    <b>lang<span style="color:red">*</span></b> is the language of the company. Allowed values are:<br>
+                    <b>Lang</b> is the language of the company. If you don't pass English will be applied. Allowed values are:<br>
                     <ul>
                         <!-- 'en', 'zh', 'fr', 'cn', 'es', 'ko', 'de', 'ja', 'ru', 'pt', 'br', 'it', 'nl', 'uk' -->
                         <li><b>en</b> - English</li>
