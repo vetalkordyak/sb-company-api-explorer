@@ -231,6 +231,26 @@ console.log(endpoint);
             };
             break;
 
+        case 'getCompanyCategories':
+            url = `${host}/simplybook/company/categories`;
+            options = {
+                method: 'GET',
+                headers: {
+                    'X-Token': token
+                }
+            };
+            break;
+
+        case 'getCompanyCountries':
+            url = `${host}/simplybook/company/countries`;
+            options = {
+                method: 'GET',
+                headers: {
+                    'X-Token': token
+                }
+            };
+            break;
+
         default:
             return;
     }
@@ -273,7 +293,7 @@ console.log(endpoint);
 document.addEventListener('DOMContentLoaded', function () {
 
 //check if response is saved in local storage
-    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription', 'getCompanyStatus'];
+    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription', 'getCompanyStatus', 'getCompanyCategories', 'getCompanyCountries'];
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
