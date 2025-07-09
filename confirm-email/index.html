@@ -35,6 +35,8 @@
             background-color: #f4f4f4;
             padding: 10px;
             white-space: pre-wrap;
+            max-height: 300px; /* Limit the height of the response */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds the limit */
         }
     </style>
 </head>
@@ -316,6 +318,54 @@
 
 
         </div>
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="get-company-categories">
+                <h2>Get Company Categories</h2>
+
+                <p>
+                    This API endpoint returns a list of categories available for the company.
+                </p>
+
+                <p><strong>GET</strong> <code>/simplybook/company/categories</code></p>
+                <p>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>X-Token:</b> {{token}}</li>
+                    </ul>
+                </p>
+
+                <button onclick="callApi('getCompanyCategories')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="getCompanyCategoriesResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="get-company-countries">
+                <h2>Get Countries</h2>
+
+                <p>
+                    This API endpoint returns a list of countries available for the company.
+                </p>
+
+                <p><strong>GET</strong> <code>/simplybook/company/countries</code></p>
+                <p>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>X-Token:</b> {{token}}</li>
+                    </ul>
+                </p>
+
+                <button onclick="callApi('getCompanyCountries')" class="w-100 btn btn-primary">Call API</button>
+
+                <pre id="getCompanyCountriesResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
 
     </main>
 </div>

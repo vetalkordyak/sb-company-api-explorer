@@ -1,5 +1,3 @@
-
-
 getData = function () {
     let data = {
         "host": document.getElementById('host').value,
@@ -104,7 +102,27 @@ async function callApi(endpoint) {
                 body: requestBody
             };
             break;
-            
+
+        case 'getCompanyCategories':
+            url = `${host}/simplybook/company/categories`;
+            options = {
+                method: 'GET',
+                headers: {
+                    'X-Token': token
+                }
+            };
+            break;
+
+        case 'getCompanyCountries':
+            url = `${host}/simplybook/company/countries`;
+            options = {
+                method: 'GET',
+                headers: {
+                    'X-Token': token
+                }
+            };
+            break;
+
         default:
             return;
     }
@@ -155,7 +173,7 @@ async function callApi(endpoint) {
 document.addEventListener('DOMContentLoaded', function () {
 
     //check if response is saved in local storage
-    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription'];
+    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription', 'getCompanyCategories', 'getCompanyCountries'];
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
