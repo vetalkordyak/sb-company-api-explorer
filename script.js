@@ -174,6 +174,21 @@ console.log(endpoint);
             };
             break;
 
+        case 'deleteCustomDomain':
+            company = document.getElementById('deleteCustomDomainCompany').value;
+            url = `${host}/simplybook/company/${company}/custom-domain`;
+            //requestBody = document.getElementById('customDomainRequest').value;
+            requestBody = prepareRequest('{}');
+            options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+
         case 'customSmtp':
             company = document.getElementById('customSmtpCompany').value;
             url = `${host}/simplybook/company/${company}/custom-smtp`;
