@@ -369,6 +369,57 @@
         </div>
 
 
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="enable-plugin">
+                <h2>Enable Plugin</h2>
+
+                <p>
+                    This API endpoint enables a plugin for the company.
+                </p>
+
+                <p><strong>POST</strong> <code>/simplybook/company/{{company}}/plugin/{{plugin}}/enable</code></p>
+                <p>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>X-Token:</b> {{token}}</li>
+                    </ul>
+                </p>
+
+                <input type="text" id="enablePluginCompany" class="form-control" value="" placeholder="Company login" />
+                <input type="text" id="enablePluginPlugin" class="form-control" value="" placeholder="Plugin name" />
+
+                <button onclick="callApi('enablePlugin')" class="w-100 btn btn-primary">Call API</button>
+                <pre id="enablePluginResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+        <div class="mt-3 col-12">
+            <div class="endpoint" id="disable-plugin">
+                <h2>Disable Plugin</h2>
+
+                <p>
+                    This API endpoint disables a plugin for the company.
+                </p>
+
+                <p><strong>POST</strong> <code>/simplybook/company/{{company}}/plugin/{{plugin}}/disable</code></p>
+                <p>
+                    <strong>HEADER</strong>
+                    <ul>
+                        <li><b>X-Token:</b> {{token}}</li>
+                    </ul>
+                </p>
+
+                <input type="text" id="disablePluginCompany" class="form-control" value="" placeholder="Company login" />
+                <input type="text" id="disablePluginPlugin" class="form-control" value="" placeholder="Plugin name" />
+
+                <button onclick="callApi('disablePlugin')" class="w-100 btn btn-primary">Call API</button>
+                <pre id="disablePluginResponse" class="mt-3"><code class="language-json"></code></pre>
+            </div>
+            <hr class="my-4">
+        </div>
+
+
     </main>
 </div>
 </body>

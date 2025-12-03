@@ -123,6 +123,30 @@ async function callApi(endpoint) {
             };
             break;
 
+        case 'enablePlugin':
+            company = document.getElementById('enablePluginCompany').value;
+            var plugin = document.getElementById('enablePluginPlugin').value;
+            url = `${host}/simplybook/company/${company}/plugin/${plugin}/enable`;
+            options = {
+                method: 'POST',
+                headers: {
+                    'X-Token': token
+                }
+            };
+            break;
+
+        case 'disablePlugin':
+            company = document.getElementById('disablePluginCompany').value;
+            var plugin = document.getElementById('disablePluginPlugin').value;
+            url = `${host}/simplybook/company/${company}/plugin/${plugin}/disable`;
+            options = {
+                method: 'POST',
+                headers: {
+                    'X-Token': token
+                }
+            };
+            break;
+
         default:
             return;
     }
