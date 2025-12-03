@@ -132,3 +132,52 @@ In case of error:
   "message_data": []
 }
 ```
+
+---------------
+
+## Enable plugin
+
+### Request
+**POST** `{{ host }}/simplybook/company/{{ company }}/plugin/{{plugin}}/enable`
+
+**Headers:**
+- Content-Type: application/json
+- X-Token: {{ token }}
+
+**Response**
+Empty response if no errors.
+
+In case of error:
+```json
+{
+  "code": 404,
+  "message": "Plugin not found",
+  "data": [],
+  "message_data": []
+}
+```
+
+---------------
+
+## Disable plugin
+
+### Request
+**POST** `{{ host }}/simplybook/company/{{ company }}/plugin/{{plugin}}/disable`
+
+**Headers:**
+- Content-Type: application/json
+- X-Token: {{ token }}
+
+**Response**
+Empty response if no errors.
+
+In case of error:
+```json
+{
+  "code": 404,
+  "message": "Plugin not found",
+  "data": [],
+  "message_data": []
+}
+```
+
