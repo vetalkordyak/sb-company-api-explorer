@@ -368,6 +368,130 @@
             <hr class="my-4">
         </div>
 
+        <script>
+            var plugins = {
+                "event_field": "Intake forms",
+                "status": "Status",
+                "paid_events": "Accept payments",
+                "description": "HTML description fields",
+                "event_category": "Service categories",
+                "news": "News",
+                "google_analytics": "Google adwords and analytics",
+                "facebookImage": "Facebook client info",
+                "google_calendar_export": "Calendar sync",
+                "user_license": "Terms and Conditions and Privacy Policy",
+                "custom_css": "Custom CSS",
+                "advanced_notification": "Book Soon notification system",
+                "multiple_booking": "Multiple bookings",
+                "group_booking": "Group bookings",
+                "any_unit": "Any Employee selector",
+                "location": "Multiple Locations",
+                "secure": "SSL",
+                "contact_widget": "Contact widget",
+                "api": "API",
+                "financial_dashboard": "Insights",
+                "limit_bookings": "Limit bookings",
+                "approve_booking": "Approve booking",
+                "back_to_site": "Take me back home",
+                "data_security": "Clean history",
+                "unit_colors": "Provider's color coding",
+                "recap": "Daily report",
+                "counter": "Visitor counter",
+                "hipaa": "Patient data protection (HIPAA)",
+                "fixed_time": "Appointment at fixed time",
+                "cancelation_policy": "Cancellation Policy",
+                "gallery": "Photo Gallery",
+                "flexible_template": "Flexible Notifications",
+                "smtp": "SMTP Email",
+                "client_login": "Client login",
+                "membership": "Membership",
+                "custom_domain": "Custom domain name",
+                "enterprise": "Extended domain branding",
+                "sms": "SMS Gateway",
+                "classes": "Classes",
+                "import_clients": "Import clients",
+                "social_gallery": "Instagram photo sharing",
+                "paid_attributes": "Service Add-ons",
+                "product": "Products for sale",
+                "google_authenticator": "Google Authenticator",
+                "client_soap_crypt": "SOAP with data encryption",
+                "promotion": "Coupons & Gift cards",
+                "google_translate": "Google Translate",
+                "strict_password": "Password security settings",
+                "google_tag_manager": "Google Tag Manager",
+                "pos": "Point of Sale",
+                "static_page": "Custom Page",
+                "package": "Packages",
+                "zapier": "Zapier Connector",
+                "google_business": "Google Business",
+                "line_bot": "Line Bot",
+                "facebook_business": "Facebook & Instagram Bookings",
+                "deposit_paid_events": "Accept deposits",
+                "kiosk": "Kiosk",
+                "reschedule_booking": "Client Rescheduling",
+                "slots_count": "Display Remaining Spaces",
+                "resources": "Related resources",
+                "tickets": "Tickets",
+                "client_field": "Client fields",
+                "online_meeting": "Online Video Meetings",
+                "saml": "SSO: SAML",
+                "waiting_list": "Waiting List",
+                "pwa": "Client mobile app",
+                "external_booking_validator": "External booking validator",
+                "tickets_qr_code": "Ticket's QR Code",
+                "vaccination": "Vaccination",
+                "custom_email": "Custom email",
+                "tracking": "Facebook Pixel",
+                "medical_test": "Medical test",
+                "cloud_storage": "File Uploader - Google Drive",
+                "telegram_notifications": "Telegram Notifications",
+                "bonus_system": "Loyalty System",
+                "line_liff": "Line Liff",
+                "look_busy": "Make me look busy",
+                "google_reviews": "Google Reviews",
+                "booking_restriction": "Anti-Fraud/Spam Protection",
+                "time_before_service": "Custom interval before service reservation",
+                "tips": "Tips",
+                "tags": "Tags",
+                "campaign": "Campaign",
+                "react_widget": "Smart widget",
+                "classpass": "ClassPass integration",
+                "ai_booking": "AI Voice Booking"
+            }
+        </script>
+
+        <script>
+            (function(){
+                function buildPluginList(containerId, inputId) {
+                    var container = document.getElementById(containerId);
+                    if (!container) return;
+                    container.innerHTML = '';
+                    Object.keys(plugins).sort().forEach(function(key){
+                        var name = plugins[key];
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.className = 'list-group-item list-group-item-action';
+                        btn.innerHTML = name + ' <small class="text-muted">(' + key + ')</small>';
+                        btn.setAttribute('data-plugin', key);
+                        btn.addEventListener('click', function(){
+                            var input = document.getElementById(inputId);
+                            if (input) input.value = this.getAttribute('data-plugin');
+                        });
+                        container.appendChild(btn);
+                    });
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', function(){
+                        buildPluginList('enablePluginList','enablePluginPlugin');
+                        buildPluginList('disablePluginList','disablePluginPlugin');
+                    });
+                } else {
+                    buildPluginList('enablePluginList','enablePluginPlugin');
+                    buildPluginList('disablePluginList','disablePluginPlugin');
+                }
+            })();
+        </script>
 
         <div class="mt-3 col-12">
             <div class="endpoint" id="enable-plugin">
@@ -388,7 +512,17 @@
                 <input type="text" id="enablePluginCompany" class="form-control" value="" placeholder="Company login" />
                 <input type="text" id="enablePluginPlugin" class="form-control" value="" placeholder="Plugin name" />
 
-                <button onclick="callApi('enablePlugin')" class="w-100 btn btn-primary">Call API</button>
+                <div class="d-flex gap-2 mt-2">
+                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#enablePluginCollapse" aria-expanded="false">Show plugins</button>
+                    <button onclick="callApi('enablePlugin')" class="w-100 btn btn-primary">Call API</button>
+                </div>
+
+                <div class="collapse mt-2" id="enablePluginCollapse">
+                    <div class="card card-body p-2">
+                        <div id="enablePluginList" class="list-group" style="max-height:240px;overflow:auto;"></div>
+                    </div>
+                </div>
+
                 <pre id="enablePluginResponse" class="mt-3"><code class="language-json"></code></pre>
             </div>
             <hr class="my-4">
@@ -413,7 +547,17 @@
                 <input type="text" id="disablePluginCompany" class="form-control" value="" placeholder="Company login" />
                 <input type="text" id="disablePluginPlugin" class="form-control" value="" placeholder="Plugin name" />
 
-                <button onclick="callApi('disablePlugin')" class="w-100 btn btn-primary">Call API</button>
+                <div class="d-flex gap-2 mt-2">
+                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#disablePluginCollapse" aria-expanded="false">Show plugins</button>
+                    <button onclick="callApi('disablePlugin')" class="w-100 btn btn-primary">Call API</button>
+                </div>
+
+                <div class="collapse mt-2" id="disablePluginCollapse">
+                    <div class="card card-body p-2">
+                        <div id="disablePluginList" class="list-group" style="max-height:240px;overflow:auto;"></div>
+                    </div>
+                </div>
+
                 <pre id="disablePluginResponse" class="mt-3"><code class="language-json"></code></pre>
             </div>
             <hr class="my-4">
