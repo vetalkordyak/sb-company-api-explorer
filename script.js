@@ -204,6 +204,21 @@ console.log(endpoint);
             };
             break;
 
+        case 'marketingConsent':
+            company = document.getElementById('marketingConsentCompany').value;
+            url = `${host}/simplybook/company/${company}/marketing-consent`;
+            requestBody = document.getElementById('marketingConsentRequest').value;
+            requestBody = prepareRequest(requestBody);
+            options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Token': token
+                },
+                body: requestBody
+            };
+            break;
+
         case 'getCompanyStatus':
             company = document.getElementById('getCompanyStatusCompany').value;
             url = `${host}/simplybook/company/${company}/status`;
@@ -308,7 +323,7 @@ console.log(endpoint);
 document.addEventListener('DOMContentLoaded', function () {
 
 //check if response is saved in local storage
-    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription', 'getCompanyStatus', 'getCompanyCategories', 'getCompanyCountries'];
+    const endpoints = ['getAuthToken', 'refreshAuthToken', 'registerCompany', 'applySubscription', 'marketingConsent', 'getCompanyStatus', 'getCompanyCategories', 'getCompanyCountries'];
     endpoints.forEach(endpoint => {
         const response = localStorage.getItem(`${endpoint}Response`);
         if (response) {
