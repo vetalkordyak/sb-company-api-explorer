@@ -217,6 +217,7 @@
                     <b>widget_notification_url</b> is the URL where the notification URLs will come to in emails (for cancel booking, edit bookings, etc).<br>
                     <b>journey_type</b> is the type of the journey (welcome tour). Optional.<br>
                     <b>marketing_consent</b> is a boolean indicating if the company consents to marketing communications. Default value is false.<br>
+                    <b>ip</b> is a comma-separated list of trusted IPv4 addresses to add to the admin user's trusted IP list (e.g. <code>"1.2.3.4, 5.6.7.8"</code>). Only public IPv4 addresses are accepted; private, reserved or invalid values are silently skipped. The IP address from which the registration request is made is always added automatically.<br>
                     <br>
                     <small>Required fields are marked with <span style="color:red">*</span></small>
                 </p>
@@ -249,7 +250,8 @@
     "categories": ["6"],
     "lang" : "en",
     "widget_notification_url": "https://mysite.com/simplybook",
-    "callback_url": "https://webhook.site/7e3c8b69-8956-44da-bd23-de6da6e063cc"
+    "callback_url": "https://webhook.site/7e3c8b69-8956-44da-bd23-de6da6e063cc",
+    "ip": "1.2.3.4, 5.6.7.8"
 }</textarea><br>
 
                 <button onclick="callApi('registerCompany')" class="w-100 btn btn-primary">Call API</button>
